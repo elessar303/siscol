@@ -16,7 +16,9 @@ class Usuarios extends Controller
     {
         $objUsuarios = new User();
         $dataUsuarios=$objUsuarios->orderBy('name', 'asc')->get()->all();
-        return view('usuarios.index')->with(['lista'=>$dataUsuarios]);
+        $cabecera=array('N°','Nombre', 'Email');
+        $arrData=array('title'=>'Usuarios','route'=>'/usuarios/create', 'lista'=>$dataUsuarios, 'cabecera'=>$cabecera);
+        return view('usuarios.index')->with('data',$arrData);
     }
 
     /**
